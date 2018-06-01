@@ -31,9 +31,21 @@ connection.connect(function(err) {
 function getData(){
     connection.query("SELECT * FROM products", function(err, res) {
         if (err) throw err;
-        console.log(res);
+        //console.log(res);
+        productList(res)
         connection.end();
+        
       });  
+}
+
+function productList(array) {
+  for(i=0;i<array.length;i++){
+    //console.log(array[i])
+    console.log("ID:", array[i].item_id)
+    console.log("Product:", array[i].product_name)
+    console.log("Price:", array[i].price)
+    console.log("Only", array[i].stock_quantity , "left in stock!")
+  }
 }
 
 
